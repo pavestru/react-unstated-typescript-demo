@@ -3,11 +3,11 @@ import { Provider, Subscribe } from "unstated";
 
 import "./App.css";
 
-import { Explorers } from "../pages/Explorers";
-import { Ships } from "../pages/Ships";
-import { AppStateContainer } from "../store";
+import { Explorers } from "../../pages/Explorers";
+import { Ships } from "../../pages/Ships";
+import { AppStateContainer } from "../../store";
 
-import logo from "./logo.svg";
+import logo from "../../logo.svg";
 
 class App extends React.Component {
   public render() {
@@ -28,7 +28,7 @@ class App extends React.Component {
                   </button>
                 </p>
                 <Explorers explorers={[{ name: "James Cook" }]} />
-                <Ships explorers={[{ name: "Santa Maria" }]} />
+                <Ships ships={[{ name: "Santa Maria" }]} />
               </div>
             )}
           </Subscribe>
