@@ -27,8 +27,10 @@ class App extends React.Component {
                     {stateContainer.state.happy ? "Yes" : "No"}
                   </button>
                 </p>
-                <Explorers explorers={[{ name: "James Cook" }]} />
-                <Ships ships={[{ name: "Santa Maria" }]} />
+                <Explorers
+                  explorers={stateContainer.state.Explorers.explorers}
+                />
+                <Ships ships={stateContainer.state.Ships.ships} />
               </div>
             )}
           </Subscribe>

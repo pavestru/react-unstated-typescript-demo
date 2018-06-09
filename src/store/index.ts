@@ -1,9 +1,11 @@
 import { Container } from "unstated";
-import { AppState } from "./types";
+import { AppState, Reducer } from "./types";
+import { initialState } from "./initialState";
 
 export class AppStateContainer extends Container<AppState> {
-  state: AppState = {
-    happy: true
+  state: AppState = initialState;
+  dispatch = (reducer: Reducer) => {
+    this.setState(reducer);
   };
   changeMood = () =>
     this.setState(oldState => ({
