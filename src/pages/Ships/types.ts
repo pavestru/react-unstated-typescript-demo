@@ -3,5 +3,5 @@ export interface Ship {
 }
 
 export interface ShipsData {
-  explorers: Ship[];
+  ships: Ship[];
 }
