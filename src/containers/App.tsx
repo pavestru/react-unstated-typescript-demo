@@ -3,6 +3,8 @@ import { Provider, Subscribe } from "unstated";
 
 import "./App.css";
 
+import { Explorers } from "../pages/Explorers";
+import { Ships } from "../pages/Ships";
 import { AppStateContainer } from "../store";
 
 import logo from "./logo.svg";
@@ -18,12 +20,16 @@ class App extends React.Component {
           </header>
           <Subscribe to={[AppStateContainer]}>
             {(stateContainer: AppStateContainer) => (
-              <p className="App-intro">
-                Are you happy?
-                <button onClick={stateContainer.changeMood}>
-                  {stateContainer.state.happy ? "Yes" : "No"}
-                </button>
-              </p>
+              <div>
+                <p className="App-intro">
+                  Are you happy?
+                  <button onClick={stateContainer.changeMood}>
+                    {stateContainer.state.happy ? "Yes" : "No"}
+                  </button>
+                </p>
+                <Explorers explorers={[{ name: "James Cook" }]} />
+                <Ships explorers={[{ name: "Santa Maria" }]} />
+              </div>
             )}
           </Subscribe>
         </div>
