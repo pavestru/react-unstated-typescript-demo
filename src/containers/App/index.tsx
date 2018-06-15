@@ -27,13 +27,11 @@ class App extends React.Component {
                     {stateContainer.state.happy ? "Yes" : "No"}
                   </button>
                 </p>
-                <Explorers
-                  explorers={stateContainer.state.Explorers.explorers}
-                />
-                <Ships ships={stateContainer.state.Ships.ships} />
               </div>
             )}
           </Subscribe>
+          <Explorers />
+          <Ships />
         </div>
       </Provider>
     );
