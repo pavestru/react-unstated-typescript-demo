@@ -7,4 +7,6 @@ export interface AppState {
   Ships: ShipsData;
 }
 
-export type Reducer = (oldState: AppState) => AppState;
+export type Reducer<D> = (oldState: D) => D;
+
+export type Dispatch<D> = (reducer: Reducer<D>) => void;
