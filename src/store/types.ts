@@ -10,3 +10,5 @@ export interface AppState {
 export type Reducer<D> = (oldState: D) => D;
 
 export type Dispatch<D> = (reducer: Reducer<D>) => void;
+
+export type ActionCreator<D> = (param: string | number) => Reducer<D>;

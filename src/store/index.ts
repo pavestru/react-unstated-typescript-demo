@@ -4,7 +4,7 @@ import { initialState } from "./initialState";
 
 export class AppStateContainer extends Container<AppState> {
   state: AppState = initialState;
-  dispatch = (reducer: Reducer) => {
+  dispatch = (reducer: Reducer<AppState>) => {
     this.setState(reducer);
   };
   changeMood = () =>
