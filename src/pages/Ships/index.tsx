@@ -5,43 +5,53 @@ import { Dispatch } from "../../store/types";
 import { addShip } from "./actions";
 import { ShipsData } from "./types";
 
-export class Ships extends React.Component {
+interface ShipsProps {
+  data: ShipsData;
+  dispatch: Dispatch<ShipsData>;
+}
+
+export class Ships extends React.Component<ShipsProps, {}> {
   input: HTMLInputElement | null;
-  handleAdd = (dispatch: Dispatch<ShipsData>) => () => {
+  handleAdd = () => {
     let value = "";
     if (this.input && this.input.value) {
       value = this.input.value;
       this.input.value = "";
     }
-    dispatch(addShip(value));
+    this.props.dispatch(addShip(value));
   };
   render() {
+    const { ships } = this.props.data;
     return (
-      <Connect<ShipsData> to="Ships">
-        {(data: ShipsData, dispatch: Dispatch<ShipsData>) => (
-          <div>
-            <h2>Ships</h2>
-            <ul>
-              {data.ships.map(({ name }, index) => (
-                <li key={`${name}_${index}`}>{name}</li>
-              ))}
-              <li>
-                <input
-                  ref={el => {
-                    this.input = el;
-                  }}
-                  onKeyPress={e => {
-                    if (e.key === "Enter") {
-                      this.handleAdd(dispatch)();
-                    }
-                  }}
-                />
-                <button onClick={this.handleAdd(dispatch)}>Add</button>
-              </li>
-            </ul>
-          </div>
-        )}
-      </Connect>
+      <div>
+        <h2>Ships</h2>
+        <ul>
+          {ships.map(({ name }, index) => (
+            <li key={`${name}_${index}`}>{name}</li>
+          ))}
+          <li>
+            <input
+              ref={el => {
+                this.input = el;
+              }}
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  this.handleAdd();
+                }
+              }}
+            />
+            <button onClick={this.handleAdd}>Add</button>
+          </li>
+        </ul>
+      </div>
     );
   }
 }
+
+export const ShipsPage = () => (
+  <Connect<ShipsData> to="Ships">
+    {(data: ShipsData, dispatch: Dispatch<ShipsData>) => (
+      <Ships data={data} dispatch={dispatch} />
+    )}
+  </Connect>
+);
