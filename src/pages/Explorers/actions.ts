@@ -5,5 +5,5 @@ export const addExplorer: ActionCreator<ExplorersData> = (name: string) => (
   oldState: ExplorersData
 ) => ({
   ...oldState,
-  ships: [...oldState.explorers, { name }]
+  explorers: [...oldState.explorers, { name }]
 });
