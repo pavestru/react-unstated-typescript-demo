@@ -49,7 +49,7 @@ export class Explorers extends React.Component<ExplorersProps, {}> {
 }
 
 export const ExplorersPage = () => (
-  <Connect<ExplorersData> to="Explorers">
+  <Connect<ExplorersData> to={ExplorersData}>
     {(data: ExplorersData, dispatch: Dispatch<ExplorersData>) => (
       <Explorers data={data} dispatch={dispatch} />
     )}

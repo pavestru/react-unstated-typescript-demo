@@ -49,7 +49,7 @@ export class Ships extends React.Component<ShipsProps, {}> {
 }
 
 export const ShipsPage = () => (
-  <Connect<ShipsData> to="Ships">
+  <Connect<ShipsData> to={ShipsData}>
     {(data: ShipsData, dispatch: Dispatch<ShipsData>) => (
       <Ships data={data} dispatch={dispatch} />
     )}
