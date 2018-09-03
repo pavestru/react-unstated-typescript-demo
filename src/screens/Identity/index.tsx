@@ -2,7 +2,7 @@ import * as React from "react";
 import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
-import { addExplorer } from "./actions";
+import { changeFirstName, changeLastName } from "./actions";
 import { IdentityData } from "./types";
 
 interface IdentityProps {
@@ -11,36 +11,55 @@ interface IdentityProps {
 }
 
 export class Identity extends React.Component<IdentityProps, {}> {
-  input: HTMLInputElement | null;
-  handleAdd = () => {
+  firstName: HTMLInputElement | null;
+  lastName: HTMLInputElement | null;
+  changeFirstName = () => {
     let value = "";
-    if (this.input && this.input.value) {
-      value = this.input.value;
-      this.input.value = "";
+    if (this.firstName && this.firstName.value) {
+      value = this.firstName.value;
+      this.firstName.value = "";
     }
-    this.props.dispatch(addExplorer(value));
+    this.props.dispatch(changeFirstName(value));
+  };
+  changeLastName = () => {
+    let value = "";
+    if (this.lastName && this.lastName.value) {
+      value = this.lastName.value;
+      this.lastName.value = "";
+    }
+    this.props.dispatch(changeLastName(value));
   };
   render() {
-    const { explorers } = this.props.data;
+    const { firstName, lastName } = this.props.data;
     return (
       <div>
         <h2>Identity</h2>
         <ul>
-          {explorers.map(({ name }, index) => (
-            <li key={`${name}_${index}`}>{name}</li>
-          ))}
           <li>
+            {firstName}
             <input
               ref={el => {
-                this.input = el;
+                this.firstName = el;
               }}
               onKeyPress={e => {
                 if (e.key === "Enter") {
-                  this.handleAdd();
+                  this.changeFirstName();
                 }
               }}
             />
-            <button onClick={this.handleAdd}>Add</button>
+          </li>
+          <li>
+            {lastName}
+            <input
+              ref={el => {
+                this.lastName = el;
+              }}
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  this.changeLastName();
+                }
+              }}
+            />
           </li>
         </ul>
       </div>
