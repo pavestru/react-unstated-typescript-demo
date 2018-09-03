@@ -2,7 +2,7 @@ import * as React from "react";
 import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
-import { addShip } from "./actions";
+import { changeAddress } from "./actions";
 import { PlaceOfResidenceData } from "./types";
 
 interface PlaceOfResidenceProps {
@@ -14,38 +14,27 @@ export class PlaceOfResidence extends React.Component<
   PlaceOfResidenceProps,
   {}
 > {
-  input: HTMLInputElement | null;
-  handleAdd = () => {
+  address: HTMLTextAreaElement | null;
+  handleChange = () => {
     let value = "";
-    if (this.input && this.input.value) {
-      value = this.input.value;
-      this.input.value = "";
+    if (this.address && this.address.value) {
+      value = this.address.value;
+      this.address.value = "";
     }
-    this.props.dispatch(addShip(value));
+    this.props.dispatch(changeAddress(value));
   };
   render() {
-    const { ships } = this.props.data;
+    const { address } = this.props.data;
     return (
       <div>
         <h2>PlaceOfResidence</h2>
-        <ul>
-          {ships.map(({ name }, index) => (
-            <li key={`${name}_${index}`}>{name}</li>
-          ))}
-          <li>
-            <input
-              ref={el => {
-                this.input = el;
-              }}
-              onKeyPress={e => {
-                if (e.key === "Enter") {
-                  this.handleAdd();
-                }
-              }}
-            />
-            <button onClick={this.handleAdd}>Add</button>
-          </li>
-        </ul>
+        <div>{address}</div>
+        <textarea
+          ref={el => {
+            this.address = el;
+          }}
+        />
+        <button onClick={this.handleChange}>Save</button>
       </div>
     );
   }
