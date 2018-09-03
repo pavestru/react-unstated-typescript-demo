@@ -2,6 +2,6 @@ export interface Ship {
   name: string;
 }
 
-export class ShipsData {
+export class PlaceOfResidenceData {
   ships: Ship[];
 }

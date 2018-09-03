@@ -1,7 +1,7 @@
-import { ExplorersData } from "../pages/Explorers/types";
-import { ShipsData } from "../pages/Ships/types";
+import { IdentityData } from "../pages/Identity/types";
+import { PlaceOfResidenceData } from "../pages/PlaceOfResidence/types";
 
-export type PageData = ExplorersData | ShipsData;
+export type PageData = IdentityData | PlaceOfResidenceData;
 
 export interface SuperType<D> {
   // tslint:disable-next-line: no-any

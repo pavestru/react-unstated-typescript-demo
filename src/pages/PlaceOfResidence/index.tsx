@@ -2,15 +2,18 @@ import * as React from "react";
 import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
-import { addExplorer } from "./actions";
-import { ExplorersData } from "./types";
+import { addShip } from "./actions";
+import { PlaceOfResidenceData } from "./types";
 
-interface ExplorersProps {
-  data: ExplorersData;
-  dispatch: Dispatch<ExplorersData>;
+interface PlaceOfResidenceProps {
+  data: PlaceOfResidenceData;
+  dispatch: Dispatch<PlaceOfResidenceData>;
 }
 
-export class Explorers extends React.Component<ExplorersProps, {}> {
+export class PlaceOfResidence extends React.Component<
+  PlaceOfResidenceProps,
+  {}
+> {
   input: HTMLInputElement | null;
   handleAdd = () => {
     let value = "";
@@ -18,15 +21,15 @@ export class Explorers extends React.Component<ExplorersProps, {}> {
       value = this.input.value;
       this.input.value = "";
     }
-    this.props.dispatch(addExplorer(value));
+    this.props.dispatch(addShip(value));
   };
   render() {
-    const { explorers } = this.props.data;
+    const { ships } = this.props.data;
     return (
       <div>
-        <h2>Explorers</h2>
+        <h2>PlaceOfResidence</h2>
         <ul>
-          {explorers.map(({ name }, index) => (
+          {ships.map(({ name }, index) => (
             <li key={`${name}_${index}`}>{name}</li>
           ))}
           <li>
@@ -48,10 +51,10 @@ export class Explorers extends React.Component<ExplorersProps, {}> {
   }
 }
 
-export const ExplorersPage = () => (
-  <Connect<ExplorersData> to={ExplorersData}>
-    {(data: ExplorersData, dispatch: Dispatch<ExplorersData>) => (
-      <Explorers data={data} dispatch={dispatch} />
+export const PlaceOfResidencePage = () => (
+  <Connect<PlaceOfResidenceData> to={PlaceOfResidenceData}>
+    {(data: PlaceOfResidenceData, dispatch: Dispatch<PlaceOfResidenceData>) => (
+      <PlaceOfResidence data={data} dispatch={dispatch} />
     )}
   </Connect>
 );

@@ -2,15 +2,15 @@ import * as React from "react";
 import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
-import { addShip } from "./actions";
-import { ShipsData } from "./types";
+import { addExplorer } from "./actions";
+import { IdentityData } from "./types";
 
-interface ShipsProps {
-  data: ShipsData;
-  dispatch: Dispatch<ShipsData>;
+interface IdentityProps {
+  data: IdentityData;
+  dispatch: Dispatch<IdentityData>;
 }
 
-export class Ships extends React.Component<ShipsProps, {}> {
+export class Identity extends React.Component<IdentityProps, {}> {
   input: HTMLInputElement | null;
   handleAdd = () => {
     let value = "";
@@ -18,15 +18,15 @@ export class Ships extends React.Component<ShipsProps, {}> {
       value = this.input.value;
       this.input.value = "";
     }
-    this.props.dispatch(addShip(value));
+    this.props.dispatch(addExplorer(value));
   };
   render() {
-    const { ships } = this.props.data;
+    const { explorers } = this.props.data;
     return (
       <div>
-        <h2>Ships</h2>
+        <h2>Identity</h2>
         <ul>
-          {ships.map(({ name }, index) => (
+          {explorers.map(({ name }, index) => (
             <li key={`${name}_${index}`}>{name}</li>
           ))}
           <li>
@@ -48,10 +48,10 @@ export class Ships extends React.Component<ShipsProps, {}> {
   }
 }
 
-export const ShipsPage = () => (
-  <Connect<ShipsData> to={ShipsData}>
-    {(data: ShipsData, dispatch: Dispatch<ShipsData>) => (
-      <Ships data={data} dispatch={dispatch} />
+export const IdentityPage = () => (
+  <Connect<IdentityData> to={IdentityData}>
+    {(data: IdentityData, dispatch: Dispatch<IdentityData>) => (
+      <Identity data={data} dispatch={dispatch} />
     )}
   </Connect>
 );

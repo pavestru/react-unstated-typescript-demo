@@ -3,8 +3,8 @@ import { Provider, Subscribe } from "unstated";
 
 import "./App.css";
 
-import { ExplorersPage } from "../../pages/Explorers";
-import { ShipsPage } from "../../pages/Ships";
+import { IdentityPage } from "../../pages/Identity";
+import { PlaceOfResidencePage } from "../../pages/PlaceOfResidence";
 import { AppStateContainer } from "../../store";
 
 import logo from "../../logo.svg";
@@ -30,8 +30,8 @@ class App extends React.Component {
               </div>
             )}
           </Subscribe>
-          <ExplorersPage />
-          <ShipsPage />
+          <IdentityPage />
+          <PlaceOfResidencePage />
         </div>
       </Provider>
     );

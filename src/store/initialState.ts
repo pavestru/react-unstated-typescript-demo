@@ -1,14 +1,14 @@
 import { AppState } from "./types";
-import * as Explorers from "../pages/Explorers/store";
-import * as Ships from "../pages/Ships/store";
+import * as Identity from "../pages/Identity/store";
+import * as PlaceOfResidence from "../pages/PlaceOfResidence/store";
 
-import { ExplorersData } from "../pages/Explorers/types";
-import { ShipsData } from "../pages/Ships/types";
+import { IdentityData } from "../pages/Identity/types";
+import { PlaceOfResidenceData } from "../pages/PlaceOfResidence/types";
 
 const getInitialPages = () => {
   const kvArray = [
-    [ExplorersData, Explorers.initialState],
-    [ShipsData, Ships.initialState]
+    [IdentityData, Identity.initialState],
+    [PlaceOfResidenceData, PlaceOfResidence.initialState]
   ];
   const initialPages = new Map();
   kvArray.forEach(kv => {

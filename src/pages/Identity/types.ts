@@ -2,6 +2,6 @@ export interface Explorer {
   name: string;
 }
 
-export class ExplorersData {
+export class IdentityData {
   explorers: Explorer[];
 }
