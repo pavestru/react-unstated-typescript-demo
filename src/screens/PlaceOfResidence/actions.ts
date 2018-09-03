@@ -1,4 +1,4 @@
-import { PlaceOfResidenceData } from "./types";
+import { PlaceOfResidenceData } from "./store";
 
 export const changeAddress = (address: string) => (
   oldState: PlaceOfResidenceData

@@ -3,11 +3,10 @@ import { Provider, Subscribe } from "unstated";
 
 import "./App.css";
 
-import { IdentityScreen } from "../../screens/Identity";
-import { PlaceOfResidenceScreen } from "../../screens/PlaceOfResidence";
 import { AppStateContainer } from "../../store";
 
 import logo from "../../logo.svg";
+import { AppLayout } from "../AppLayout";
 
 class App extends React.Component {
   public render() {
@@ -20,18 +19,9 @@ class App extends React.Component {
           </header>
           <Subscribe to={[AppStateContainer]}>
             {(stateContainer: AppStateContainer) => (
-              <div>
-                <p className="App-intro">
-                  Are you happy?
-                  <button onClick={stateContainer.changeMood}>
-                    {stateContainer.state.happy ? "Yes" : "No"}
-                  </button>
-                </p>
-              </div>
+              <AppLayout stateContainer={stateContainer} />
             )}
           </Subscribe>
-          <IdentityScreen />
-          <PlaceOfResidenceScreen />
         </div>
       </Provider>
     );

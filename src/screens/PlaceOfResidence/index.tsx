@@ -3,7 +3,7 @@ import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
 import { changeAddress } from "./actions";
-import { PlaceOfResidenceData } from "./types";
+import { PlaceOfResidenceData } from "./store";
 
 interface PlaceOfResidenceProps {
   data: PlaceOfResidenceData;
@@ -24,7 +24,7 @@ export class PlaceOfResidence extends React.Component<
     this.props.dispatch(changeAddress(value));
   };
   render() {
-    const { address } = this.props.data;
+    const { address } = this.props.data.properties;
     return (
       <div>
         <h2>PlaceOfResidence</h2>

@@ -1,5 +1,6 @@
-import { PlaceOfResidenceData } from "./types";
-
-export const initialState: PlaceOfResidenceData = {
-  address: "42 Market Street, San Francisco, CA"
-};
+export class PlaceOfResidenceData {
+  id: string;
+  properties: {
+    address: string;
+  };
+}

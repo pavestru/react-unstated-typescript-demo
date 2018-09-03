@@ -3,7 +3,7 @@ import { Connect } from "../../containers/Connect";
 import { Dispatch } from "../../store/types";
 
 import { changeFirstName, changeLastName } from "./actions";
-import { IdentityData } from "./types";
+import { IdentityData } from "./store";
 
 interface IdentityProps {
   data: IdentityData;
@@ -30,7 +30,7 @@ export class Identity extends React.Component<IdentityProps, {}> {
     this.props.dispatch(changeLastName(value));
   };
   render() {
-    const { firstName, lastName } = this.props.data;
+    const { firstName, lastName } = this.props.data.properties;
     return (
       <div>
         <h2>Identity</h2>

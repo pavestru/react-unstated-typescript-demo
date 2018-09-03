@@ -37,9 +37,13 @@ export class Connect<D extends ScreenData> extends React.Component<
     return (
       <Subscribe to={[AppStateContainer]}>
         {(stateContainer: AppStateContainer) => {
-          const data = stateContainer.state.screens.get(this.props.to);
-          const dispatch = this.subStateDispatch(stateContainer);
-          return this.props.children(data as D, dispatch);
+          if (stateContainer.state) {
+            const data = stateContainer.state.screens.get(this.props.to);
+            const dispatch = this.subStateDispatch(stateContainer);
+            return this.props.children(data as D, dispatch);
+          } else {
+            return <div>Loading...</div>;
+          }
         }}
       </Subscribe>
     );
