@@ -51,7 +51,7 @@ export class PlaceOfResidence extends React.Component<
   }
 }
 
-export const PlaceOfResidencePage = () => (
+export const PlaceOfResidenceScreen = () => (
   <Connect<PlaceOfResidenceData> to={PlaceOfResidenceData}>
     {(data: PlaceOfResidenceData, dispatch: Dispatch<PlaceOfResidenceData>) => (
       <PlaceOfResidence data={data} dispatch={dispatch} />

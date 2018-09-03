@@ -1,9 +1,9 @@
-// import { PageData, BaseProperty } from "./types";
+// import { ScreenData, BaseProperty } from "./types";
 
 // export const changePropertyValue = <PropertiesEnum extends string>(
 //   property: PropertiesEnum,
 //   value: number | string
-// ) => (prevState: PageData) => ({
+// ) => (prevState: ScreenData) => ({
 //   ...prevState,
 //   properties: {
 //     ...prevState.properties,

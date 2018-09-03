@@ -1,7 +1,7 @@
-import { IdentityData } from "../pages/Identity/types";
-import { PlaceOfResidenceData } from "../pages/PlaceOfResidence/types";
+import { IdentityData } from "../screens/Identity/types";
+import { PlaceOfResidenceData } from "../screens/PlaceOfResidence/types";
 
-export type PageData = IdentityData | PlaceOfResidenceData;
+export type ScreenData = IdentityData | PlaceOfResidenceData;
 
 export interface SuperType<D> {
   // tslint:disable-next-line: no-any
@@ -12,7 +12,7 @@ export interface SuperMap<T> extends Map<SuperType<T>, T> {}
 
 export interface AppState {
   happy: boolean;
-  pages: SuperMap<PageData>;
+  screens: SuperMap<ScreenData>;
 }
 
 export type Reducer<D> = (oldState: D) => D;

@@ -1,24 +1,24 @@
 import { AppState } from "./types";
-import * as Identity from "../pages/Identity/store";
-import * as PlaceOfResidence from "../pages/PlaceOfResidence/store";
+import * as Identity from "../screens/Identity/store";
+import * as PlaceOfResidence from "../screens/PlaceOfResidence/store";
 
-import { IdentityData } from "../pages/Identity/types";
-import { PlaceOfResidenceData } from "../pages/PlaceOfResidence/types";
+import { IdentityData } from "../screens/Identity/types";
+import { PlaceOfResidenceData } from "../screens/PlaceOfResidence/types";
 
-const getInitialPages = () => {
+const getInitialScreens = () => {
   const kvArray = [
     [IdentityData, Identity.initialState],
     [PlaceOfResidenceData, PlaceOfResidence.initialState]
   ];
-  const initialPages = new Map();
+  const initialScreens = new Map();
   kvArray.forEach(kv => {
-    initialPages.set(kv[0], kv[1]);
+    initialScreens.set(kv[0], kv[1]);
   });
-  return initialPages;
+  return initialScreens;
 };
 
 export const initialState: AppState = {
   happy: false,
-  // initial state from sub-pages
-  pages: getInitialPages()
+  // initial state from sub-screens
+  screens: getInitialScreens()
 };

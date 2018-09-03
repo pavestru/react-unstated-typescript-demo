@@ -48,7 +48,7 @@ export class Identity extends React.Component<IdentityProps, {}> {
   }
 }
 
-export const IdentityPage = () => (
+export const IdentityScreen = () => (
   <Connect<IdentityData> to={IdentityData}>
     {(data: IdentityData, dispatch: Dispatch<IdentityData>) => (
       <Identity data={data} dispatch={dispatch} />
